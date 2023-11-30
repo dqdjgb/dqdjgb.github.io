@@ -1,0 +1,929 @@
+* {
+    padding: 0;
+    margin: 0;
+    /* color: white; */
+}
+
+/* 新增内容 */
+
+#myModal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0.2;
+}
+
+#myModal img {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+body {
+    /* background: #ffffff; */
+    min-height: 1500px;
+}
+
+section {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+}
+
+section::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* height: 20px; */
+    /* 渐变函数(从下往上,起始颜色,终止颜色) */
+    /* background: linear-gradient(to top, #ffffff, transparent); */
+    z-index: 10000;
+}
+
+section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1c244b;
+    mix-blend-mode: lighten;
+    z-index: 10001;
+}
+
+
+section img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /* 图片以何种方式填充父元素 */
+    object-fit: cover;
+
+    /* 设置或检索在何时成为属性事件的target */
+    pointer-events: none;
+}
+
+#text {
+    position: relative;
+    color: rgb(90, 195, 236);
+    font-size: 10em;
+    font-weight: 1200;
+    z-index: 1;
+}
+
+#road {
+    z-index: 2;
+}
+
+
+
+/* 原内容 */
+
+
+/* 导航栏nav */
+#navlist {
+    z-index: 100000;
+    height: 60px;
+    background-color: rgb(255, 255, 255);
+    /* visibility: hidden; */
+    /* position: relative; */
+    /* top: 0px; */
+    /* background-color: rgb(255, 255, 255); */
+    box-shadow: 0 0 30px rgb(0 0 0 / 20%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    float: left;
+    /*该语句解决flex与fixed不兼容问题*/
+}
+
+#navlist>a:first-child>img {
+    width: 40px;
+    margin: 0 0 0 50px;
+}
+
+#navlist>.search {
+    border-radius: 10px;
+    height: 20px;
+    width: 50px;
+}
+
+#navlist>.search {
+    margin: 0 20px 0 80px;
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 12px 20px 12px 10px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    color: #ccc;
+}
+
+#navlist>.search:focus {
+    width: 300px;
+}
+
+#navlist>a:nth-child(4)>img {
+    width: 30px;
+    margin: 0 50px 0 0;
+    /* margin: 0 50px; */
+}
+
+/* .fillnav {
+    height: 60px;
+    position: sticky;
+    top: 0px;
+    background-color: white;
+} */
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a,
+#navlist>ul {
+    /* display: inline-block; */
+    display: flex;
+}
+
+#navlist>ul {
+    width: 700px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+    /* background-color: blueviolet; */
+    position: relative;
+}
+
+#navlist>ul>li {
+    /* background-color: red; */
+    color: inherit;
+    margin: 0 0 0 20px;
+    width: 75px;
+    height: 100%;
+    /* display: inline-block; */
+    display: flex;
+    position: relative;
+    /* text-align: center; */
+    justify-content: center;
+    /* background-color: brown; */
+    transition: all 0.2s ease;
+}
+
+#navlist>ul>li:hover {
+    transition: background-color .15s cubic-bezier(.64, .15, .53, .53);
+    background-image: url(../images/adown.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    /* width: 100%; */
+    /* height: 3px; */
+    content: "";
+    /* display: flex; */
+    /* border-radius: 2px 2px 0 0; */
+}
+
+
+
+#navlist>ul>li>ul {
+    position: absolute;
+    /* top: 35px; */
+    top: 53px;
+    /* display: flex; */
+
+    /* display: none; */
+    opacity: 0;
+    transform: translate3d(0, -4px, 0);
+    visibility: hidden;
+    transition: all 0.2s ease;
+
+    display: flex;
+
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    width: 120px;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 15px 30px -10px rgb(0 0 0 / 20%);
+}
+
+/* 悬停过渡 */
+#navlist>ul>li:hover ul {
+
+
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+    opacity: 1;
+    /* display: flex; */
+    top: 60px;
+
+}
+
+#navlist>ul>li>a {
+    color: inherit;
+    /* margin: 0 auto; */
+    height: 100%;
+    line-height: 60px;
+}
+
+#navlist>ul>li>a {
+    /* color: black; */
+    font-weight: 700;
+}
+
+
+#navlist>ul>li>a,
+#navlist>ul>li>ul>li>a {
+    text-decoration: none;
+}
+
+#navlist>ul>li>ul>li {
+    list-style-type: none;
+    height: 40px;
+}
+
+
+#navlist>ul>li>ul>li>a {
+    line-height: 40px;
+    color: rgb(108, 119, 120);
+    border-left: 5px rgba(0, 0, 0, 0);
+    transition: all 0.2s ease;
+}
+
+#navlist>ul>li>ul>li>a::before {
+    content: "";
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 2px;
+    height: 16px;
+    width: 4px;
+    margin: auto 0;
+    transform: translateX(-5px);
+    transition: background-color .15s cubic-bezier(.64, .15, .53, .53);
+}
+
+#navlist>ul>li>ul>li:hover a::before {
+    background-color: rgb(0, 153, 217);
+}
+
+#navlist>ul>li>ul>li>a:hover {
+    color: rgb(0, 0, 0);
+}
+
+#history-container {
+    margin-top: 20px;
+    width: 1200px;
+    height: 750px;
+    float: left;
+}
+
+#history-title {
+    margin: 0 auto;
+    width: 1200px;
+    text-align: center;
+}
+
+
+#history {
+    padding-top: 0;
+    float: left;
+    width: 600px;
+    margin-right: 150px;
+    height: 600px;
+    background-color: rgb(253, 254, 255);
+}
+
+
+#history-left {
+    width: 450px;
+    height: 600px;
+    background-color: rgba(166, 214, 253, 0.192);
+    float: left;
+}
+
+#history-left>img {
+    position: relative;
+    right: 25px;
+    margin: 10px 25px 10px 100px;
+    width: 350px;
+    height: 180px;
+    float: right;
+}
+
+#history-title>h2 {
+    text-align: center;
+    line-height: 50px;
+    color: rgb(0, 0, 0);
+}
+
+#history-title>h4 {
+    text-align: center;
+    color: rgb(143, 143, 143);
+    line-height: 35px;
+}
+
+#news {
+    margin-top: 15px;
+    width: 1000px;
+    margin-left: 100px;
+    margin-right: 100px;
+    background-color: white;
+    height: 500px;
+    border-radius: 12px;
+    box-shadow: 0 0 32px rgb(0 0 0 / 15%);
+    ;
+}
+
+#news-container {
+    margin-top: 100px;
+    background-repeat: no-repeat;
+    height: 750px;
+}
+
+#news-container>h2 {
+    text-align: center;
+    line-height: 50px;
+    color: rgb(0, 0, 0);
+}
+
+#news-container>h4 {
+    text-align: center;
+    color: rgb(143, 143, 143);
+    line-height: 35px;
+}
+
+.photo-radius {
+    border-radius: 12px;
+    -webkit-box-shadow: rgb(0 0 0 / 20%) 0px 0px 50px;
+    -moz-box-shadow: rgb(0 0 0 / 20%) 0px 0px 20px;
+    box-shadow: rgb(0 0 0 / 20%) 0px 0px 20px;
+}
+
+
+#lpicture {
+    width: 450px;
+    float: left;
+    margin: 25px;
+    background: white;
+    height: 470px;
+}
+
+#ltext {
+    float: left;
+    width: 430px;
+    margin: 5px;
+    margin-left: 25px;
+    background: white;
+}
+
+#ltext>ul {
+    line-height: 35px;
+}
+
+#ltext>ul>h4 {
+    float: right;
+}
+
+#ltop {
+    height: 275px;
+    width: 450px;
+    position: relative;
+    z-index: 0;
+}
+
+#ldown {
+    height: 150px;
+    width: 450px;
+}
+
+#lleft {
+    position: relative;
+    margin: 10px 15px 5px 0;
+    height: 157px;
+    width: 210px;
+    float: left;
+    z-index: 0px;
+}
+
+#lright {
+    position: relative;
+    margin: 10px 0 5px 15px;
+    height: 157px;
+    width: 210px;
+    float: left;
+    z-index: 0px;
+}
+
+.news_text {
+    position: absolute;
+    bottom: 45px;
+    left: 20px;
+    right: 5px;
+    z-index: 50px;
+    color: white;
+}
+
+#ltext li {
+    list-style-type: disc;
+}
+
+#ltext a:link {
+    text-decoration: none;
+    color: black;
+}
+
+#ltext a:visited {
+    text-decoration: none;
+    color: rgb(58, 57, 57);
+}
+
+#news-container {
+    float: left;
+    width: 1200px;
+    height: 750px;
+}
+
+pwhite {
+    color: white;
+    font-size: 15px;
+}
+
+.timezone {
+    width: 6px;
+    height: 500px;
+    background: rgb(76, 107, 117);
+    margin: 0 auto;
+    margin-top: 50px;
+    border-radius: 3px;
+    position: relative;
+}
+
+.timezone:after {
+    content: 'To be continue...';
+    width: 200px;
+    color: rgb(105, 105, 105);
+    position: absolute;
+    margin-left: -35px;
+    bottom: -40px;
+}
+
+.timezone .time {
+    position: relative;
+    margin-left: -10px;
+    margin-top: 90px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.5);
+    background: lightblue;
+    float: left;
+}
+
+
+.timezone .time h2 {
+    position: absolute;
+    margin-left: -120px;
+    margin-top: 3px;
+    color: #232F3E;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.timezone .time:hover {
+    border: 4px solid rgb(86, 101, 105);
+    background: lemonchiffon;
+    box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.4);
+    z-index: 20px;
+}
+
+.timezone .time div {
+    padding: 0 3px 0 3px;
+    position: absolute;
+    top: 100%;
+    margin-top: -25px;
+    left: 50px;
+    width: 300px;
+    height: 25px;
+    background: rgb(243, 251, 253);
+    border: 1.5px solid #435974;
+    border-radius: 5px;
+    z-index: 2;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+
+.timezone .time div p {
+    color: rgb(80, 80, 80);
+    font-weight: normal;
+    text-align: center;
+}
+
+.timezone .time div p1 {
+    font-family: AEmb, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+    color: #232F3E;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: left;
+}
+
+.timezone .time div:hover {
+    height: auto;
+    z-index: 5;
+
+}
+
+.timezone .time:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 32px;
+    width: 0px;
+    height: 0px;
+    border: 10px solid transparent;
+    border-right: 10px solid #eee;
+    z-index: -1;
+}
+
+.timezone .time div ul {
+    list-style: none;
+    width: 300px;
+    padding: 5px 0 0;
+    border-top: 2px solid #eee;
+    color: #fff;
+    text-align: center;
+}
+
+.timezone .time div li {
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+}
+
+#container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#header {
+    width: 1200px;
+    height: 75px;
+    background: rgb(255, 255, 255);
+    display: block;
+    z-index: 1;
+    position: fixed;
+
+}
+
+#title {
+    float: left;
+    width: 1200px;
+    height: 600px;
+    background-image: url("images/6.png");
+    background-repeat: no-repeat;
+    z-index: 0;
+    margin-bottom: 50px;
+}
+
+#main {
+    clear: both;
+    margin: 0 auto;
+    position: relative;
+    z-index: 0;
+}
+
+#famous {
+    float: left;
+    clear: both;
+    width: 1000px;
+    background-image: url("../images/plur.png");
+    /*background-image: url("images/blue7.png");*/
+    background-repeat: round;
+    padding: 50px 100px 100px 100px;
+    height: 350px;
+}
+
+.title_text>h3 {
+    line-height: 50px;
+    font-size: 32px !important;
+    color: #232F3E;
+}
+
+
+#lo {
+    height: 175px;
+}
+
+#pic {
+    width: 1000px;
+    background-color: darkblue;
+}
+
+#picture {
+    position: relative;
+    right: 100px;
+    z-index: -100px;
+}
+
+#footer {
+    background-color: rgb(199, 232, 243);
+    width: 1200px;
+    height: 200px;
+    clear: both;
+    float: left;
+}
+
+#placeholder {
+    width: 1200px;
+    background-color: #fff;
+    height: 75px;
+}
+
+#placeholder2 {
+    width: 1200px;
+    padding-top: 200px;
+    background-color: #fff;
+    height: 500px;
+}
+
+.centerbox {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.verticalcenterbox {
+    display: flex;
+    align-items: center;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+.head ul {
+    float: left;
+    list-style-type: disc;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+}
+
+.head li {
+    float: left;
+    margin-right: 5px;
+    font-family: '微软雅黑';
+    font-weight: bold;
+    font-size: small;
+}
+
+.head li a {
+    display: block;
+    color: rgb(2, 2, 2);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.head li a:hover {
+    background-color: rgba(234, 236, 103, 0.541);
+}
+
+.head li a:hover:not(.active) {
+    background-color: rgba(152, 195, 250, 0.562);
+}
+
+.active {
+    background-color: #2ba2f1a9;
+}
+
+.logo {
+    text-align: center;
+    height: 75px;
+    width: 300px;
+    margin-right: 100px;
+    float: left;
+}
+
+.title_text {
+    text-align: center;
+    margin: 0 auto;
+    line-height: 35px;
+}
+
+.fimg {
+    text-align: center;
+    float: left;
+    size: 20%;
+    height: 100px;
+    margin: 0 80px 0 80px;
+    width: 100px;
+    line-height: 30px;
+}
+
+.fbutton {
+    padding: 5px;
+    text-align: center;
+    background-color: #fff;
+    border: 2.5px solid #232f3e;
+    border-radius: 20px;
+    height: 30px;
+    width: 125px;
+    margin: 0 50px 0 50px;
+}
+
+.fbutton>h4 {
+    line-height: 30px;
+    color: #232f3e;
+}
+
+.fbutton:hover {
+    -webkit-box-shadow: rgb(0 0 0 / 20%) 0px 0px 50px;
+    -moz-box-shadow: rgb(0 0 0 / 20%) 0px 0px 20px;
+    box-shadow: rgb(0 0 0 / 20%) 0px 0px 20px;
+}
+
+.footer_box {
+    float: left;
+    text-align: center;
+    width: 340px;
+    margin: 15px 10px 0 10px;
+    ;
+    padding: 20px;
+    height: 95px;
+    line-height: 30px;
+}
+
+.fcon {
+    width: 1200px;
+    text-align: center;
+}
+
+.title-box {
+    background-color: rgba(255, 248, 220, 0.267);
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    top: 125px;
+    right: 200px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 3px solid rgb(248, 245, 245);
+    border-radius: 50px 50px 50px 50px;
+}
+
+.title-box>h3 {
+    text-align: center;
+    font-size: 50px;
+    font-family: "黑体";
+    color: white;
+    line-height: 150px;
+}
+
+.title-box>p {
+    font-size: 25px;
+    font-family: "微软雅黑";
+    color: white;
+    font-weight: normal;
+    line-height: 50px;
+}
+
+.title-logo {
+    position: absolute;
+    right: 100px;
+    top: 175px;
+    transform: scale(0.75, 0.75);
+}
+
+.hr {
+    position: absolute;
+    top: 140px;
+    left: 20px;
+    width: 275px;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.685);
+}
+
+.title-box>hr {
+    width: 275px;
+    height: 10px;
+    color: white;
+}
+
+
+h2 {
+    text-align: center;
+    font-family: '微软雅黑';
+    color: black;
+    font-size: xx-large;
+    letter-spacing: 2px;
+    font-weight: bolder;
+}
+
+h3g {
+    text-align: center;
+    font-family: AEmb, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+    color: rgb(143, 143, 143);
+    letter-spacing: 0px;
+    font-weight: 800px;
+    font-size: 16px !important;
+    line-height: 24px;
+}
+
+p {
+    font-family: AEmb, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+    font-weight: normal;
+    color: #232f3e;
+    line-height: 25px;
+    font-size: 17px;
+}
+
+wp2 {
+    color: rgb(61, 65, 66);
+    font-family: '微软雅黑';
+    font-size: 16px;
+    text-align: left;
+}
+
+wp1 {
+    color: rgb(61, 65, 66);
+    font-family: '微软雅黑';
+    font-size: 20px;
+    line-height: 35px;
+
+}
+
+wp3 {
+    color: rgb(86, 88, 88);
+    font-family: '微软雅黑';
+    font-size: 15px;
+    letter-spacing: 2.5px;
+    font-weight: lighter;
+}
+
+wp {
+    color: #004B91;
+    font-family: '微软雅黑';
+    font-size: 16px;
+    text-align: left;
+    font-weight: 550;
+}
+
+.footer_box>ul>li>a {
+    margin: 0 auto;
+    text-align: center;
+}

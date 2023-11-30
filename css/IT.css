@@ -1,0 +1,415 @@
+body {
+    /* background-color: blue; */
+    position: relative;
+    /* height: 1600px; */
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    background-image: url(../images/amazon2.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+
+body::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    background-image: url(../images/amazon2.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    bottom: 0;
+    /* left: 0; */
+    width: 100%;
+    height: 30vh;
+    z-index: -1;
+}
+
+
+/* 中心内容 */
+.limit {
+    width: 80%;
+    height: 100%;
+    /* padding: 0 80px; */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    /* flex: 1 1 800px; */
+    /* -webkit-box-align: stretch; */
+    justify-content: stretch;
+    align-items: stretch;
+    justify-content: space-between;
+    /* background-color: cyan; */
+}
+
+.leftout {
+
+    float: left;
+    /* background-color: chartreuse; */
+    /* flex: 2 2 auto; */
+    /* height: 100%; */
+    width: 500px;
+    z-index: 1;
+    /* width: 300px; */
+}
+
+/* 左侧粘性布局 */
+.leftnav {
+    /* flex: 1 1 500px; */
+
+    /* float: left; */
+    /* flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; */
+    /* width: 300px; */
+    /* background-color: crimson; */
+    /* height: 150px; */
+    /* margin: 150px 50px 0 0; */
+    margin: 150px 0 0 0;
+    z-index: 1;
+    /* float: left; */
+    position: sticky;
+    top: 120px;
+    /* left: 120px; */
+}
+
+/* 右侧主要内容 */
+.content {
+    float: right;
+    /* width: 800px; */
+    /* flex: 1 1 auto; */
+    /* float: right; */
+    margin: 150px 0 0 10px;
+    width: 1700px;
+    display: flex;
+    flex-direction: column;
+    /* background-color: darkcyan; */
+}
+
+/* 第一部分 */
+.bigTitle h1 {
+    color: #232f3e;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 38px;
+}
+
+.bigTitle {
+    margin: 0 0 40px 0;
+}
+
+
+.bigTitle h2 {
+    color: #879596;
+    width: 100%;
+    font-weight: 400;
+    font-size: 16px;
+    /* background-color: crimson; */
+}
+
+.leftAndRight {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 20px 0;
+}
+
+.leftAndRight>.left {
+    margin: 0 100px 0 50px;
+    flex: 1 1 400px;
+    float: left;
+}
+
+.leftAndRight>.right {
+    width: 300px;
+    float: right;
+}
+
+.leftAndRight>.right>img {
+    width: 170px;
+}
+
+.nomean {
+    clear: both;
+}
+
+.rightAndLeft {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.rightAndLeft>.left2 {
+    float: left;
+    margin: 0 0 0 20px;
+}
+
+.rightAndLeft>.left2>img {
+    width: 150px;
+}
+
+.rightAndLeft>.right2 {
+    float: right;
+    margin: 0 50px 0 100px;
+}
+
+
+/* 第二部分 */
+#part2 .imgAndContext>.eachDiv {
+    display: flex;
+    margin: 30px 0 10px 0;
+}
+
+.title1 {
+    font-size: 16px;
+    color: #232f3e;
+    display: inline-block;
+    margin: 10px 0;
+    padding: 0 5px 0 15px;
+    border-left: 8px;
+    border-left-color: rgb(0, 153, 217);
+    border-left-style: solid;
+}
+
+p {
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 1.5em;
+}
+
+.title2 {
+    font-size: 16px;
+    color: #232f3e;
+}
+
+/*第三部分*/
+
+.part3 {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 32px rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    margin: 0 0 300px 0;
+}
+
+#showdiv1 {
+    width: 96%;
+    /* display: block; */
+    margin: 15px 0 5px 15px;
+}
+
+#change1:active {
+    transition: linear;
+}
+
+#change1 {
+    height: auto;
+    width: 80px;
+    color: black;
+    text-decoration: none;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+
+
+
+.hideDivStyle1 {
+    max-height: 180px;
+    /* opacity: 1; */
+    /* visibility: visible; */
+}
+
+.hideDivStyle2 {
+    max-height: 0;
+    /* opacity: 0; */
+    /* visibility: hidden; */
+}
+
+
+
+
+#showdiv1>a:hover a:visited {
+    background: powderblue;
+}
+
+#hidediv1 {
+    transition: .3s ease-out;
+    transition-property: all;
+    transition-duration: 0.6s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    overflow: hidden;
+
+
+    float: left;
+    width: auto;
+    margin: 0 auto;
+    text-align: left;
+    margin-left: 20px;
+}
+
+#hidediv1>li {
+    display: block;
+}
+
+/*第二个下拉*/
+
+#showdiv2 {
+    width: 96%;
+    /* display: block; */
+    margin: 5px 0 15px 15px;
+    /* background-color: #f89; */
+}
+
+#change2 {
+    height: auto;
+    width: 80px;
+    color: black;
+    text-decoration: none;
+}
+
+#hidediv2 {
+    transition: .3s ease-out;
+    transition-property: all;
+    transition-duration: 0.6s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    overflow: hidden;
+}
+
+#showdiv2>a:hover a:visited {
+    background: powderblue;
+}
+
+#hidediv2 {
+    float: left;
+    width: auto;
+    margin: 0 auto;
+    text-align: left;
+    margin-left: 20px;
+}
+
+#hidediv2>li {
+    display: block;
+}
+
+div.moreLeft {
+    float: left;
+    margin: 24px 16px 24px 10px;
+}
+
+/* 下拉导航栏before图标 */
+#showdiv1 .moreTitlle,
+#showdiv2 .moreTitlle {
+    display: flex;
+    align-items: center;
+
+}
+
+#showdiv1 .moreTitlle::before,
+#showdiv2 .moreTitlle::before {
+    display: inline-block;
+    content: "";
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    margin: 0 20px 0 0;
+}
+
+#showdiv1 .moreTitlle::before {
+    background-image: url(../images/cg.svg);
+}
+
+#showdiv2 .moreTitlle::before {
+    background-image: url(../images/dsj.svg);
+}
+
+
+
+
+
+div.moreRight {
+    float: right;
+    width: 25px;
+    margin: 24px 16px 24px 0;
+}
+
+
+
+
+
+
+
+img.pho {
+    height: 90px;
+    width: 90px;
+    margin-right: 50px;
+}
+
+a.acss {
+    font-weight: bold;
+}
+
+span {
+    padding-bottom: 5px;
+    border-bottom: 2px solid #f89;
+}
+
+
+/* 下拉列表动画 */
+#ci1,
+#ci2 {
+    width: 24px;
+}
+
+
+
+.soonDown {
+    animation: downa 0.3s ease-in-out 0s 1 forwards;
+}
+
+@keyframes downa {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-90deg);
+    }
+}
+
+.soonLeft {
+    animation: lefta 0.3s ease-in-out 0s 1 forwards;
+}
+
+@keyframes lefta {
+    from {
+        transform: rotate(-90deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+
+/* part上滑样式 */
+.myscroll1>* {
+    position: relative;
+    top: 200px;
+    transition: top 0.5s ease-in-out;
+}
+
+.myscroll2>* {
+    position: relative;
+    top: 0;
+    transition: top 0.5s ease-in-out;
+}

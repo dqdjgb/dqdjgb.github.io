@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link rel="stylesheet" href="css/首页.css">
+
+    <script type="text/javascript">
+        // nav部分鼠标悬停效果
+        function over() {
+            document.getElementById('navlist').setAttribute('class', 'over');
+        }
+
+        function out() {
+            document.getElementById('navlist').setAttribute('class', 'out');
+        }
+
+        // nav>ul>li>a部分鼠标悬停效果
+        function navover() {
+            document.getElementById('navlist').setAttribute('class', 'navover');
+        }
+
+        function showModal() {
+            let modal = document.getElementById('myModal');
+            document.getElementById('myModal').setAttribute(display,"block");
+            document.body.style.overflow = "hidden"; // 禁用页面滚动
+        }
+
+        function hideModal() {
+            let modal = document.getElementById('myModal');
+            document.getElementById('myModal').setAttribute(display,"none");
+            document.body.style.overflow = "auto"; // 恢复页面滚动
+        }
+
+    </script>
+
+
+</head>
+
+
+<body>
+    <div id="navlist" onmouseover="over()" onmouseout="out()"
+        style="background-color: rgba(255, 255, 255, 0); color: white;">
+        <a href="#"><img src="images/logo.svg"></a>
+        <ul id="whiteToBlack">
+            <li>
+                <a href="index.html">首页</a>
+            </li>
+            <li>
+                <a href="#a1">自我介绍</a>
+                <ul>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#a2">职务情况</a>
+                <ul>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#a3">获奖情况</a>
+                <ul>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:showModal()">
+                    简历
+                </a>
+                <ul>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                </ul>
+            </li>
+        </ul>
+        <input type="text" class="search" value="点击搜索">
+        <a href="#"><img src="images/search.svg"></a>
+        <script>
+            var input = document.querySelector('.search');
+            input.onfocus = function () {
+                this.style.color = '#000';
+                if (this.value === '点击搜索') {
+                    input.value = '';
+                }
+                // console.log('得到焦点');
+            }
+            input.onblur = function () {
+                this.style.color = '#ccc';
+                if (this.value === '') {
+                    input.value = '点击搜索';
+                }
+
+                // console.log('失去焦点');
+            }
+        </script>
+
+    </div>
+    <section>
+        <img src="images/bg.jpg" id="bg">
+        <img src="images/moon.png" id="moon">
+        <img src="images/mountain1.png" id="mountain">
+        <img src="images/road3.png" id="road">
+        <h2 id="text">Frankie</h2>
+    </section>
+    <script>
+        let bg = document.getElementById("bg");
+        let moon = document.getElementById("moon");
+        let mountain = document.getElementById("mountain");
+        let road = document.getElementById("road");
+        let text = document.getElementById("text");
+        let navlist = document.getElementById("navlist");
+        let navtext = document.getElementById("whiteToBlack");
+
+        window.addEventListener('scroll', function () {
+            var value = window.scrollY;
+            bg.style.top = value * 0.7 + 'px';
+            moon.style.cssText = "left: " + value * 0.5 + 'px;' + "top: " + value * 0.5 + 'px;';
+            // moon.style.left = value * 0.5 + 'px';
+            // moon.style.top = value * 0.5 + 'px';
+
+            mountain.style.cssText = "left: " + -value * 0.3 + 'px;' + "top: " + -value * 0.1 + 'px;';
+            // mountain.style.top = -value * 0.1 + 'px';
+            // mountain.style.left = -value * 0.3 + 'px';
+            road.style.top = value * 0.15 + 'px';
+            text.style.top = value * 1 + 'px';
+            navlist.style.backgroundColor = "rgba(255,255,255," + value * 0.12 + "%" + ")";
+            navtext.style.color = "rgb(" +
+                (255 - value * 0.5) + "," +
+                (255 - value * 0.5) + "," +
+                (255 - value * 0.5) + ")";
+        })
+    </script>
+    <div id="container">
+
+
+        <div id="myModal">
+            <a href="javascript:hideModal()">
+                <span class="close">&times;</span>
+            </a>
+            <img src="images/jianli.jpg" alt="你的图片">
+        </div>
+
+        <div id="main">
+            <div id="news-container">
+                <div id="a1">
+                    <h2>自我介绍</h2>
+                </div>
+                <h4>PERSONAL INTRODUCTION</h4>
+                <div id="news">
+                    <div id="lpicture">
+                        <br>
+                        <div id="ltop">
+                            <a href="#"><img src="images/zhang.jpg" height=60% width=80% class="photo-radius"
+                                    z-index=-100px;></a>
+                        </div>
+
+                    </div>
+
+                    <div id="ltext">
+                        <br>
+                        <ul>
+                            <br>
+                            <li><a href="#">NAME: 张学韬 Frankie</a> </li>
+                            <br>
+                            <li><a href="#">AGE: 20</a></li>
+                            <br>
+                            <li><a href="#">MBTI: estp</a></li>
+                            <br>
+                            <li><a href="#">IATTENDING SCHOOL: Macau University of Science and Technology</a></li>
+                            <br>
+                            <li><a href="#">MAJOR: Business</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="famous">
+                <div id="a2"></div>
+                <div class="title_text">
+                    <h3>以前担任的职务</h3>
+                    <h3g>Previously held positions</h3g>
+                </div>
+                <br>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Served as class monitor in high school and hosted
+                    several gatherings; During my university years, I was a member of the student union of a business
+                    school; During my university years, as a member of the piano club, I participated in piano concerts
+                    organized by the school.
+                </p>
+                <br>
+                <div id="lo">
+                    <div class="centerbox">
+                        <div class="fimg">
+                            <img src="images/monitor.jpg" width=100% height=100% style="border-radius: 50%;">
+                            <h4>Class monitor</h4>
+                        </div>
+                        <div class="fimg">
+                            <img src="images/1.jpg" width=100% height=100% style="border-radius: 50%;">
+                            <h4>The student union of a business school</h4>
+                        </div>
+                        <div class="fimg">
+                            <img src="images/paino.jpeg" width=100% height=100% style="border-radius: 50%;">
+                            <h4>Piano concerts</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="history-container">
+            <div id="history-title">
+                <div id="a3"></div>
+                <br>
+                <h2>个人奖项</h2>
+                <h4>Individual awards</h4>
+                <br>
+            </div>
+            <div id="history">
+                <div class="timezone">
+                    <div class="time">
+                        <h2>2010-2016</h2>
+                        <div>
+                            <p>won the first prize of Sichuan Provincial Art Talent Piano Award</p>
+                        </div>
+                    </div>
+                    <div class="time">
+                        <h2>2012</h2>
+                        <div>
+                            <p>Singapore Youth Piano Competition</p>
+                            <ul>
+                                <li>
+                                    <p1>as the only candidate in Sichuan Province, I participated in the Singapore Youth
+                                        Piano Competition.</p1>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="time">
+                        <h2>2015</h2>
+                        <div>
+                            <p>obtained my piano proficiency certificate</p>
+                            <ul>
+                                <p1>
+                                    obtained my piano proficiency certificate
+                                </p1>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="history-left">
+                <img src="images/1.jpg" class=photo-radius alt="">
+                <img src="images/2.jpg" class=photo-radius alt="">
+                <img src="images/3.jpg" class=photo-radius alt="">
+            </div>
+        </div>
+
+
+        <div id="footer">
+            <div class="footer_box">
+                <wp1>ABOUT ME:</wp1>
+                <br>
+                <wp2>
+                    &nbsp;&nbsp; I am keen to make friends and have leadership responsibilities. If you want to know
+                    more about me, please email me and let us become good friends
+                </wp2>
+            </div>
+            <div class="footer_box">
+                <wp1>Contact me</wp1>
+                <br>
+                <div class="centerbox">
+                    <ul>
+                        <li>
+                            <wp><a href="#">1220032755@student.must.edu.mo</a></wp>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="centerbox">
+                    <br>
+                    <ul>
+                        <li>
+                            <wp><a href="#">and so on</a></wp>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="footer_box">
+                <wp1>
+                    more
+                </wp1>
+                <br>
+                <div class="centerbox">
+
+                    <br>
+                    <ul>
+                        <li>
+                            <wp><a href="#">Thank you for your understanding</a></wp>
+                        </li>
+                    </ul>
+                    
+                </div>
+
+            </div>
+            <div class="fcon">
+                <wp3>© 2023 Frankie</wp3>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    function showModal() {
+
+        var modal = document.getElementById('myModal');
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden"; // 禁用页面滚动
+    }
+
+    function hideModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+        document.body.style.overflow = "auto"; // 恢复页面滚动
+    }
+</script>
